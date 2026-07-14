@@ -1,0 +1,52 @@
+{"properties": [
+  {
+    "name": "app.admin.initializer.enabled",
+    "type": "java.lang.String",
+    "description": "A description for 'app.admin.initializer.enabled'"
+  },
+  {
+    "name": "app.security.admin-token-hours",
+    "type": "java.lang.String",
+    "description": "Admin browser token validity in hours"
+  },
+  {
+    "name": "app.security.admin-token-secret",
+    "type": "java.lang.String",
+    "description": "Secret key used to sign stateless admin browser tokens"
+  },
+  {
+    "name": "app.upload-dir",
+    "type": "java.lang.String",
+    "description": "A description for 'app.upload-dir'"
+  },
+  {
+    "name": "app.upload-public-path",
+    "type": "java.lang.String",
+    "description": "A description for 'app.upload-public-path'"
+  },
+  {
+    "name": "app.admin.initializer.password",
+    "type": "java.lang.String",
+    "description": "A description for 'app.admin.initializer.password'"
+  },
+  {
+    "name": "app.cloudinary.root-folder",
+    "type": "java.lang.String",
+    "description": "A description for 'app.cloudinary.root-folder'"
+  },
+  {
+    "name": "app.admin.initializer.full-name",
+    "type": "java.lang.String",
+    "description": "A description for 'app.admin.initializer.full-name'"
+  },
+  {
+    "name": "app.admin.initializer.username",
+    "type": "java.lang.String",
+    "description": "A description for 'app.admin.initializer.username'"
+  },
+  {
+    "name": "app.admin.initializer.email",
+    "type": "java.lang.String",
+    "description": "A description for 'app.admin.initializer.email'"
+  }
+]}
