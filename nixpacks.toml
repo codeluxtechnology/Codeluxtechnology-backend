@@ -1,0 +1,13 @@
+# nixpacks.toml at repository root
+
+[variables]
+NIXPACKS_JDK_VERSION = "21"
+
+[phases.setup]
+nixPkgs = ["jdk21", "maven"]
+
+[phases.build]
+cmds = ["cd CODELUX_Backend && mvn clean package -DskipTests"]
+
+[start]
+cmd = "java -jar CODELUX_Backend/target/CODELUX_Backend-0.0.1-SNAPSHOT.war"
