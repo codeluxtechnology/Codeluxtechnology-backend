@@ -81,6 +81,7 @@ public class SecurityConfig {
 	public CorsConfigurationSource corsConfigurationSource(
 			@Value("${app.cors.allowed-origins:*}") String allowedOriginsValue) {
 		CorsConfiguration configuration = new CorsConfiguration();
+		// Read comma-separated frontend origins from app.cors.allowed-origins / CORS_ALLOWED_ORIGINS.
 		List<String> allowedOrigins = Arrays.stream(allowedOriginsValue.split(","))
 				.map(String::trim)
 				.filter(origin -> !origin.isBlank())
