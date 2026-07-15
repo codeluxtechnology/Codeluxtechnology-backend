@@ -1,0 +1,3 @@
+# nixpacks.toml for CODELUX_Backend
+[variables]
+NIXPACKS_JDK_VERSION = "21"
