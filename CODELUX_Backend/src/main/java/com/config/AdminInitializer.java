@@ -27,7 +27,7 @@ public class AdminInitializer implements CommandLineRunner {
 
 	public AdminInitializer(AdminUserRepository adminUserRepository, PasswordEncoder passwordEncoder,
 			@Value("${app.admin.initializer.enabled:true}") boolean enabled,
-			@Value("${app.admin.initializer.email:rupnar8459@gmail.com}") String email,
+			@Value("${app.admin.initializer.email:codeluxtechnology@gmail.com}") String email,
 			@Value("${app.admin.initializer.username:admin}") String username,
 			@Value("${app.admin.initializer.full-name:Super Admin}") String fullName,
 			@Value("${app.admin.initializer.password:admin123}") String password) {

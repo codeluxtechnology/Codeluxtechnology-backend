@@ -1,7 +1,9 @@
 package com.config;
 
+import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -32,7 +34,8 @@ import jakarta.servlet.http.HttpServletResponse;
 public class SecurityConfig {
 
 	@Bean
-	public SecurityFilterChain securityFilterChain(HttpSecurity http, TokenAuthenticationFilter tokenAuthenticationFilter)
+	public SecurityFilterChain securityFilterChain(HttpSecurity http,
+			TokenAuthenticationFilter tokenAuthenticationFilter)
 			throws Exception {
 		http.csrf(AbstractHttpConfigurer::disable)
 				.cors(Customizer.withDefaults())
@@ -43,12 +46,14 @@ public class SecurityConfig {
 						.authenticationEntryPoint((request, response, authException) -> {
 							response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
 							response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-							response.getWriter().write("{\"success\":false,\"message\":\"Admin token is required\",\"data\":null}");
+							response.getWriter()
+									.write("{\"success\":false,\"message\":\"Admin token is required\",\"data\":null}");
 						})
 						.accessDeniedHandler((request, response, accessDeniedException) -> {
 							response.setStatus(HttpServletResponse.SC_FORBIDDEN);
 							response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-							response.getWriter().write("{\"success\":false,\"message\":\"Access denied\",\"data\":null}");
+							response.getWriter()
+									.write("{\"success\":false,\"message\":\"Access denied\",\"data\":null}");
 						}))
 				.authorizeHttpRequests(auth -> auth
 						.requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
@@ -73,9 +78,18 @@ public class SecurityConfig {
 	}
 
 	@Bean
-	public CorsConfigurationSource corsConfigurationSource() {
+	public CorsConfigurationSource corsConfigurationSource(
+			@Value("${app.cors.allowed-origins:*}") String allowedOriginsValue) {
 		CorsConfiguration configuration = new CorsConfiguration();
-		configuration.setAllowedOriginPatterns(List.of("*"));
+		List<String> allowedOrigins = Arrays.stream(allowedOriginsValue.split(","))
+				.map(String::trim)
+				.filter(origin -> !origin.isBlank())
+				.toList();
+		if (allowedOrigins.contains("*")) {
+			configuration.setAllowedOriginPatterns(List.of("*"));
+		} else {
+			configuration.setAllowedOrigins(allowedOrigins);
+		}
 		configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
 		configuration.setAllowedHeaders(List.of("*"));
 		configuration.setExposedHeaders(List.of("Authorization"));
