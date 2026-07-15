@@ -3,7 +3,7 @@
 NIXPACKS_JDK_VERSION = "21"
 
 [phases.build]
-cmds = ["./mvnw -DskipTests package"]
+cmds = ["chmod +x ./mvnw && ./mvnw -DskipTests package"]
 
 [start]
 # The project is packaged as a Spring Boot WAR, so start the generated .war artifact.
