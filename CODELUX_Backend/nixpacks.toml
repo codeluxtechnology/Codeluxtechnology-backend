@@ -1,3 +1,10 @@
 # nixpacks.toml for CODELUX_Backend
 [variables]
 NIXPACKS_JDK_VERSION = "21"
+
+[phases.build]
+cmds = ["./mvnw -DskipTests package"]
+
+[start]
+# The project is packaged as a Spring Boot WAR, so start the generated .war artifact.
+cmd = "java -jar target/*.war"
