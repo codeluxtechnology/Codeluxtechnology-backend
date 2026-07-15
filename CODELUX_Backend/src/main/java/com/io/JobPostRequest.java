@@ -10,6 +10,7 @@ public record JobPostRequest(
 		String description,
 		String requirements,
 		String applyEmail,
+		String applyLink,
 		LocalDate closingDate,
 		Boolean featured,
 		Boolean active) {

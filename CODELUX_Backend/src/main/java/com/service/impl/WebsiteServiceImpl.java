@@ -297,6 +297,9 @@ public class WebsiteServiceImpl implements WebsiteService {
 		if (request.applyEmail() != null) {
 			job.setApplyEmail(request.applyEmail());
 		}
+		if (request.applyLink() != null) {
+			job.setApplyLink(request.applyLink());
+		}
 		if (request.closingDate() != null) {
 			job.setClosingDate(request.closingDate());
 		}

@@ -33,6 +33,8 @@ public class JobPost extends BaseEntity {
 
 	private String applyEmail;
 
+	private String applyLink;
+
 	private LocalDate closingDate;
 
 	@Column(nullable = false)
